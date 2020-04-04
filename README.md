@@ -94,6 +94,7 @@
 <p align =“center”>
 	<img src="./imag/head-class.jpg" width="70%" height="50%" />
 </p>
+
 ## 虚指针和虚表
 
 [示例代码](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/object-model.cpp)
