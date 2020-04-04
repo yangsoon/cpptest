@@ -13,6 +13,10 @@ public:
     String& operator = (const String& str);
     ~String();
     char* get_c_str() const {return m_data;}
+
+    void print() {
+        std::cout << m_data << std::endl;
+    }
 private:
     // 使用指针 因为成员大小不确定
     char* m_data;
