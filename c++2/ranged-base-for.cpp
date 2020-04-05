@@ -6,6 +6,7 @@
 // }
 
 int main() {
+    // {}就是initializer_list<int>
     for(int i : {1,2,3,4,5,1,3}) {
         std::cout << i << ' ';
     }

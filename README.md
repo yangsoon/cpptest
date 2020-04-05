@@ -55,35 +55,43 @@
 
 15. [转换函数conversion-function](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/conversion-function.cpp)
 
-16. [pointer-like class](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/pointer-like.cpp)
+16. [explicit用法](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/conversion-function.cpp#L67)
+
+    > explicit for ctors taking  one argument
+    >
+    > explicit for ctors taking more than one argument c++11
+
+17. [pointer-like class](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/pointer-like.cpp)
 
     > 补充智能指针的知识
 
-17. [仿函数](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/function-like.cpp)
+18. [仿函数](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/function-like.cpp)
 
     > 继续学习
 
-18. [namespace](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/namespace.cpp)
+19. [namespace](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/namespace.cpp)
 
-19. [成员模板](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/member-templete.cpp)
+20. [成员模板](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/member-templete.cpp)
 
-20. [模板特化](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/specialization.cpp)和[模板偏特化](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/partial-specialization.cpp)
+21. [模板特化](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/specialization.cpp)和[模板偏特化](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/partial-specialization.cpp)
 
-21. [引用](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/reference.cpp)
+22. [引用](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/reference.cpp)
 
-22. [虚指针和虚表,动态绑定](#虚指针和虚表)
+23. [虚指针和虚表,动态绑定](#虚指针和虚表)
 
     > 当进行动态绑定的时候 就会安装下面的流程进行查找需要的函数,每个包含虚函数的对象在内存中都包含一个虚指针，这个指针是指向一个虚表 这个虚表可以看成一个数组 用来存这个对象的虚函数列表 然后依据虚函数的下标位置进行调用函数执行(*p->vptr[n])(p) 类似这样的调用
 
-23. [new delete new[] delete[]](#new和delete)
+24. [new delete new[] delete[]](#new和delete)
 
-24. [const](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/const.cpp)
+25. [const](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/const.cpp)
 
-25. C++11 new [auto](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/auto.cpp) [ranged-base](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/ranged-base-for.cpp) 
+26. C++11 new [auto](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/auto.cpp) [ranged-base](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/ranged-base-for.cpp) 
 
-26. [variadic-templates](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/variadic-templates.cpp)(太难了)
+27. [variadic-templates](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/variadic-templates.cpp)
 
-27. [重载new()和delete()](https://www.bilibili.com/video/BV1sW411J7JQ?p=2)
+    > 详情看c++11部分
+
+28. [重载new()和delete()](https://www.bilibili.com/video/BV1sW411J7JQ?p=2)
 
     重载new 每个声明都要有独特的参数列，`Foo* pf = new(300, 'a')Foo`也可以重载delete() 只有当new所调用的ctor抛出异常才会调用这些重载版本的delete()
 
@@ -156,7 +164,69 @@
 
 7. [initializer_list<>](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B11%3A14/initializer-list.cpp) 
 
-8. 
+8. array
+
+   ```c++
+   // stl源码剖析部分细看
+   ```
+
+9. explicit for ctors taking more than one argument
+
+10. ranged-based for statement 同上部分
+
+    ```c++
+    for(decl : coll) {
+      statement
+    }
+    // 等价于下面
+    for(auto pos = coll.begin(), end=coll.end(); pos!=end; ++pos) {
+      decl = *pos
+        statment
+    }
+    ```
+
+    ```c++
+    for(int i : {1,2,3,4,5,1,3}) {
+      std::cout << i << ' ';
+    }
+    for(auto e : v) {
+      std::cout << e << " ";
+    }
+    for(auto& e: v) {
+      e *= 3;
+      std::cout << e << " ";
+    }
+    ```
+
+11. [=default, =delete](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B11%3A14/equal-default-delete.cpp) 配合[拷贝构造](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B/string.h#L39)和[拷贝赋值](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B/string.h#L50) 一起食用
+
+    > 对于一个空的class c++编译器处理之后就会不在是一个空的class 因为编译器会为这个class添加
+    >
+    > 1. copy ctor 
+    > 2. copy assignment operator(=) 
+    > 3. dtor 
+    >
+    > 就是Big Three 如果你没有声明ctor 编译器会为你声明一个default ctor且都是public inline的
+
+    目的：是为了在这些函数中添加一些默认的行为，比如在ctor中调用父类的ctor或者dtor中调用父类的dtor
+
+    ```c++
+    class Empty{}; ==>
+    class Empty{
+    public:
+      // Big Three
+      Empty() {...}
+      ~Empty() {...}
+      Empty(const Empty& e) {...} // 默认行为是一个位一位的拷贝
+      Empty& operator-()(const Empty& e){...}
+    }
+    ```
+
+    如果一个类中包含指针对象 就需要自己实现 Big Three
+
+12. [No-Copy and Private-Copy](https://www.bilibili.com/video/BV1p4411v7Dh?t=1596&p=9)
+
+13. 
 
 **STL**
 
