@@ -148,10 +148,15 @@
 6. Initializer Lists
 
    ```c++
-   
+   int i; // i没有定义初值
+   int j{}; // j定义初值为0
+   int* p; // 指针p没有初值
+   int *q{}; // 指针q的初值是nullptr
    ```
 
-   
+7. [initializer_list<>](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B11%3A14/initializer-list.cpp) 
+
+8. 
 
 **STL**
 
