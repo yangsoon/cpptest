@@ -83,6 +83,10 @@
 
 26. [variadic-templates](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B2/variadic-templates.cpp)(太难了)
 
+27. [重载new()和delete()](https://www.bilibili.com/video/BV1sW411J7JQ?p=2)
+
+    重载new 每个声明都要有独特的参数列，`Foo* pf = new(300, 'a')Foo`也可以重载delete() 只有当new所调用的ctor抛出异常才会调用这些重载版本的delete()
+
 **C++11**
 
 **STL**
