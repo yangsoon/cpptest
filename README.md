@@ -226,7 +226,16 @@
 
 12. [No-Copy and Private-Copy](https://www.bilibili.com/video/BV1p4411v7Dh?t=1596&p=9)
 
-13. 
+13. Alias Template(template typedef) [视频地址](https://www.bilibili.com/video/BV1p4411v7Dh?t=1596&p=10) (太难了 回头再看看)
+
+    ```c++
+    template<typename T>
+    using Vec = std::vector<T, MyAlloc<T>>;
+    // 不能对Vec做特化
+    Vec<int> coll; => std::vector<int, MyAlloc<int>> coll;
+    ```
+
+14. 
 
 **STL**
 

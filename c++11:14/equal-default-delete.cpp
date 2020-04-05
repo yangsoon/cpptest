@@ -71,7 +71,7 @@ struct NoDtor {
 struct PrivateCopy{
 private:
     PrivateCopy(const PrivateCopy&);
-    PrivateCopy &operator=(const PrivateCopy&);
+    PrivateCopy& operator=(const PrivateCopy&);
 public:
     PrivateCopy() = default;
     ~PrivateCopy();
