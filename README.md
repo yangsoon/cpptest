@@ -87,7 +87,71 @@
 
     重载new 每个声明都要有独特的参数列，`Foo* pf = new(300, 'a')Foo`也可以重载delete() 只有当new所调用的ctor抛出异常才会调用这些重载版本的delete()
 
-**C++11**
+**C++11/14**
+
+1. variadic-templates
+
+2. Space in Template Expressions
+
+   ```c++
+   vector<list<int> > 在每个版本都适用
+   vector<list<int>>  c++11后可以
+   ```
+
+3. nullptr and std::nullptr_t
+
+   ```c++
+   // C++11之后指针可以用 nullptr代替 0 or NULL
+   void f(int);
+   void f(void*);
+   f(0); // call f(int)
+   f(NULL); // call f(int) if NULL is 0 ambiguous
+   f(nullptr); // call f(void*)
+   ```
+
+4. auto
+
+   ```c++
+   // #1 c++11 you can declare a var or an object without specifiying type by using auto
+   auto i = 42;
+   double f();
+   auto d = f();
+   // #2 auto用于2种情况 第一种是type太长 另一种是复杂的表达式 lambda 
+   vector<int> v;
+   // vector<int>::iterator pos;
+   // pos = v.begin();
+   auto pos = v.begin();
+   auto l = [](int x) -> bool{}
+   ```
+
+5. Uniform Initialization (一致性初始化)
+
+   > 原理: 编译器看到大括号 {t1,t2,tn}变做出一个 Initializer_list<T> 他关联到一个array<T,n> 调用ctor的时候 array内的元素被编译器被逐一赋值给ctor
+   >
+   > 但如果参数参数是个Initializer_list<T> 那就将参数打包直接发给函数
+
+   ```c++
+   // 如何初始化一个对象或变量，c++11 之前 新手很容易困惑 初始化可能发生在() {} =操作符
+   // c++11 后统一一个方法 用{}
+   int a[] = {1,2,3,4};
+   vector<int> v{2,3,4,5,6};
+   vector<string> city {
+     "New York", "London", "Beijing"
+   };
+   comlex<int> c{4.0, 3.0}; // 等价于 c(4.0, 3.0);
+   
+   // c++ 11 之前
+   Rect r1 = {3,7,&area};
+   Rect r1(3,7,&area);
+   ```
+
+6. Initializer Lists
+
+   ```c++
+   
+   ```
+
+   
 
 **STL**
 

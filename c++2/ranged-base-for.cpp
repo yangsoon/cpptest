@@ -13,7 +13,6 @@ int main() {
 
     int a[5] = {1,2,3,4,5};
     std::vector<int> v(a, a+5);
-
     // # 1 这个是传值 
     for(auto e : v) {
         std::cout << e << " ";
