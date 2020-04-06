@@ -237,6 +237,107 @@
 
 14. [template template parameter+alias template](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B11%3A14/template-template-parameter.cpp) [视频地址](https://www.bilibili.com/video/BV1p4411v7Dh?t=1596&p=11) (有点劝退了.... 老师最后的一笑深藏功与名)
 
+15. Type Alias
+
+    ```c++
+    // typedef void(*func)(int, int);
+    // func是一个类型 是一个函数指针
+    // 和typedef没有区别
+    using func = void(*)(int, int);
+    
+    void example(int, int) {};
+    // 函数名就是一个函数指针
+    func fn = example;
+    ```
+
+16. `using`
+
+    ```c++
+    // #1 using namespace std; using std::count;
+    // #2 声明成员函数 Base::test
+    // #3 用于alias
+    ```
+
+17. `noexcept`
+
+    > 在函数后面加上 noexcept 说明保证函数一定不会产生异常
+
+    ```c++
+    void foo() noexcept;
+    void foo() noexcept(true); // 表明在上面条件下不会丢异常
+    ```
+
+18. `override`
+
+19. `final`
+
+    ```c++
+    struct Base1 final(); // 表示不允许其他类继承
+    struct D: Base1{};// error
+    
+    struct Base2{
+      virtual void f() final; // 不允许被重写
+    }
+    
+    struct D:Base2 {
+      void f(); // error
+    }
+    ```
+
+20. `decltype`
+
+    > 这个关键字的功能类似 typeof 返回对象的类型
+
+    ```c++
+    template<typename T1, typename T2>
+    auto add(T1 x, T2 y) -> decltype(x+y);
+    
+    // error 因为编译到decltype(x+y)的时候 编译器不知道xy是什么东西
+    template<typename T1, typename T2>
+    decltype(x+y) add(T1 x, T2 y);
+    ```
+
+    ```c++
+    // auto cmp由编译器推导出类型
+    auto cmp = [](const Person& p1, const Person& p2) {
+      	return p1.lastname() > p2.lastname();
+    }
+    // set需要传递一个函数类型 用decltype可以得出
+    std::set<Person, decltype(cmp)> coll(cmp);
+    ```
+
+21. `lambda`
+    
+    > lambda没有构造和赋值函数
+    
+    ```c++
+    auto l = [] {
+    	strd::cout << "hello lambda" << std::endl;
+    }
+    l();
+    ```
+<p align =“center”>
+    	<img src="./imag/lambda.jpg" width="90%" height="50%" />
+</p>
+    
+    1. [...]中传递外部的变量
+    
+   > [&]传引用 mutable表示放在[]里面的变量可变
+       >
+       > [=]表示默认接收外界的所有变量
+    
+   <p align =“center”>
+       	<img src="./imag/lambda-1.jpg" width="90%" height="50%" />
+       </p>
+    
+   <p align =“center”>
+       	<img src="./imag/lambda-2.jpg" width="90%" height="50%" />
+       </p>
+    
+22. xxx
+
+​    
+
 **STL**
 
 ## 头文件和类的声明
