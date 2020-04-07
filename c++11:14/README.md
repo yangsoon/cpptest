@@ -222,21 +222,21 @@
 <p align =“center”>
     	<img src="../imag/lambda.jpg" width="90%" height="50%" />
 </p>
-    
+
     1. [...]中传递外部的变量
-    
+
    > [&]传引用 mutable表示放在[]里面的变量可变
        >
        > [=]表示默认接收外界的所有变量
-    
+
    <p align =“center”>
        	<img src="../imag/lambda-1.jpg" width="90%" height="50%" />
        </p>
-    
    <p align =“center”>
-       	<img src="./imag/lambda-2.jpg" width="90%" height="50%" />
+       	<img src="../imag/lambda-2.jpg" width="90%" height="50%" />
        </p>
-    
+
+
 22. Variadic Template 进阶 [视频地址](https://www.bilibili.com/video/BV1p4411v7Dh?t=1596&p=11) (以后看看)
 
 23. [右值引用](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B11%3A14/rvalue-reference.cpp) [知乎](https://www.zhihu.com/question/22111546/answer/30801982)
