@@ -101,7 +101,7 @@
     }
     ```
 
-11. [=default, =delete](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B11%3A14/equal-default-delete.cpp) 配合[拷贝构造](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B/string.h#L39)和[拷贝赋值](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B/string.h#L50) 一起食用
+11. [=default, =delete](https://github.com/yangsoon/cpptest/blob/master/c%2B%2B11%3A14/equal-default-delete.cpp) 配合[拷贝构造](https://github.com/yangsoon/cpptest/blob/master/cpp-part1/string.h#L39)和[拷贝赋值](https://github.com/yangsoon/cpptest/blob/master/cpp-part1/string.h#L50) 一起食用
 
     > 对于一个空的class c++编译器处理之后就会不在是一个空的class 因为编译器会为这个class添加
     >
