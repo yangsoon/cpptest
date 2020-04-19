@@ -35,6 +35,9 @@ class Point {
 public:
     Point(float x): _x(x) {};
     float getX() const {return _x;};
+    virtual void test() {
+        cout << "Point Test" << endl;
+    }
 private:
     float _x;
 };
@@ -42,6 +45,9 @@ private:
 class Point2d : public Point {
 public:
     Point2d(float x, float y): Point(x), _y(y) {};
+    void test() {
+        cout << "Point2d Test" << endl;
+    }
 private:
     float _y;
 };
@@ -50,6 +56,9 @@ class Point3dOO: public Point2d {
 public:
     Point3dOO(float x, float y, float z): Point2d(x, y), _z(z) {};
     float getZ() const {return _z;};
+    void test() {
+        cout << "Point3d Test" << endl;
+    }
 private:
     float _z;
 };
@@ -100,6 +109,15 @@ inline ostream& operator<< (ostream &os, const Point3dV<T, dim> &pt) {
     return os;
 }
 
+void test(Point a, Point *pointer, Point &reference) {
+    // 一定调用Point的test因为 传入的子类会被强转为Point类型的对象
+    a.test();
+
+    // 选择调用什么函数取决于指针和引用指向的对象，引用也是一种指针
+    (*pointer).test();
+    reference.test();
+}
+
 int main() {
     // #1 C语言风格
     Point3d p3d = {1,2,3};
@@ -117,4 +135,13 @@ int main() {
     int coord[2] = {10, 11};
     Point3dV<int, 2> p3dv(coord);
     cout << p3dv << endl;
+    
+    Point3dOO a(1,2,3);
+    Point* b = &a;
+    b->test();
+    Point2d c(1,2);
+    b = &c;
+    b->test();
+
+    ::test(a, &a, a);
 }
