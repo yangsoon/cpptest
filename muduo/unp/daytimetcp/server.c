@@ -67,6 +67,9 @@ int main(int argc, char **argv) {
         // 返回值是和参数3一致的如果不一样说明出错
         if (write(connfd, buff, sizeof(buff)) != sizeof(buff))
             err_sys("write error");
+
+        // 当调用close函数的时候 close函数尝试发送已排队等待发送到对端的数据 发送完毕后是正常的TCP的四次挥手
+        // 当调用close函数的时候 只有对应的socket 描述符的引用计数为0时 才会引发四次挥手
         if (close(connfd) == -1) 
             err_sys("close error");
     }
