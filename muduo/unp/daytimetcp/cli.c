@@ -25,6 +25,8 @@ int main(int argc, char **argv) {
         err_quit("usage: a.out <IPaddress>");
     }
     
+    // int socket(int family, int type, int protocol);
+
     // UNP p78 socket param1 指定协议族 一般都使用地址族的宏定义 AF_INET ...
     // param2 指定套接字类型 tcp->SOCK_STREAM udp->SOCT_DGRAM
     // param3 0
@@ -42,6 +44,8 @@ int main(int argc, char **argv) {
     // htons 将主机字节序转换为网络字节序 h->host n->network s->short(16 bit)
     servaddr.sin_port = htons(13);
     
+    // int inet_pton(int family, const char *strptr, void *addrptr);
+
     // UNP p68 inet_pton 将主机序转换为网络序 适用于ipv4/6 主要使用这个函数 p->presentation n->numeric 
     // param1 地址族 param2 待转换的字符串指针 param3 存储二进制结果
     // return 成功为0 失败返回-1
@@ -49,6 +53,7 @@ int main(int argc, char **argv) {
         err_quit("inet_pton error for %s");
     }
 
+    // int connect(int sockfd, const struct sockaddr *servaddr, socklen_t addrlen);
     // UNP p58 SA表示通用套接字地址结构 #define	SA	struct sockaddr
     // 套接字函数为了兼容不同的sock协议族 使用 sockaddr* 作为参数
     // UNP p80 connect param1 是sock函数返回的套接字描述符 param2 指向套接字地址结构的指针 param3 该结构的大小

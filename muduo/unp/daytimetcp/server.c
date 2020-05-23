@@ -52,6 +52,8 @@ int main(int argc, char **argv) {
         return: 如果accept成功返回一个内核产生的新的描述符(已连接套接字) 代表与所返回客户的tcp连接
         */
 
+       // const char *inet_ntop(int family, const void *addrptr, char *strptr, size_t len);
+
         // 如果对返回的客户协议地址都不感兴趣就直接都设置为空指针
         // if((connfd = accept(listenfd, (SA *)NULL, &NULL)) < 0) 
         if((connfd = accept(listenfd, (SA *)&cliaddr, &len)) < 0) {

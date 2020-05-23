@@ -30,16 +30,20 @@ int main(int argc, char **argv) {
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
     servaddr.sin_port = htons(SERV_PORT);
 
+    // int bind(int sockfd, const struct sockaddr *myaddr, socklen_t addrlen);
     if(bind(listenfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) < 0){
         err_sys("bind error");
     }
 
+    // int listen(int sockfd, int backlog);
     if(listen(listenfd, LISTENQ)<0) {
         err_sys("listen error");
     }
 
     for(;;) {
         clilen = sizeof(cliaddr);
+
+        // int accept(int sockfd, struct sockaddr *cliaddr, socklen_t *addrlen);
         connfd = accept(listenfd, (struct sockaddr *) &cliaddr, &clilen);
 
         if((childpid = fork()) == 0) {
