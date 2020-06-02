@@ -33,3 +33,6 @@ TBC...
 #### 1. UNP
 [MACOS 搭建UNP环境](https://meik2333.com/posts/macos-unpv1-env/)
 
+#### 2. APUE
+[MACOS 搭建APUE环境](https://github.com/MeiK2333/apue/tree/master/apue.3e)
+
