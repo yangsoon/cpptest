@@ -9,5 +9,5 @@ int compare(const T &v1, const T &v2) {
 }
 
 int main() {
-    
+    cout << compare<int>(1,2);
 }
