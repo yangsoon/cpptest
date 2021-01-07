@@ -51,15 +51,15 @@ String::String(const String& str) {
 // 首先 需要把 b清空 然后重新分配一块和a一样大的内存 将a拷贝过来
 inline
 String& String::operator=(const String& str) {
-    // 检测是不是自己 如果没有这一步 会出现错误
+    // 检测是不是自己 如果没有这一步 可能会出现错误 影响效率 因为第一个动作是把自己杀掉，如果a = a，那么没有东西可以拷贝了
     if(this==&str) {
         return *this;
     }
-    // #1 
+    // #1 把自己的内存空间删掉
     delete[] m_data;
-    // #2
+    // #2 分配一个足够的空间
     m_data = new char[strlen(str.m_data)+1];
-    // #3
+    // #3 深拷贝，把a拷贝过来
     strcpy(m_data, str.m_data);
     return *this;
 }
